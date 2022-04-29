@@ -1,5 +1,30 @@
 import random
-
+def rules(answer):
+    while True:
+        if answer == "да":
+            print("""\nВам нужно угадать слово, указанное в загадке. Вы должны выбрать букву, которая есть в слове. 
+Если вы ошибаетесь, то рисуется висельник. Завершите игру до того, как нарисуется висельник!
+Игра началась!""")
+            break
+        elif answer == 'нет':
+            print("\nИгра началась!")
+            break
+        else:
+            print("\nВведенные данные некорректны!")
+            answer = input("Введите ДА или НЕТ: ").lower().strip()
+def level(otvet):
+    while True:
+        if otvet == '1':
+            words = easy_words
+            print("Вы выбрали легкий уровень сложности!")
+            return words
+        elif otvet == '2':
+            words = hard_words
+            print('Вы выбрали сложный уровень!')
+            return words
+        else:
+            print("Введенные данные некорректны!")
+            otvet = input("\nВыберите уровень сложности.\nДля легкого введите 1, для сложного введите 2: ").strip()
 picture_of_man = (
     """
     --------
@@ -107,31 +132,9 @@ easy_words = {"АВТОМОБИЛЬ": """Вдаль зовёт его дорог
  Молочко нам дай,..."""}
 print("Хотите ли Вы ознакомиться с правилами?")
 answer = input("Введите ДА или НЕТ: ").lower().strip()
-while True:
-    if answer == "да":
-        print("""\nВам нужно угадать слово, указанное в загадке. Вы должны выбрать букву, которая есть в слове. 
-Если вы ошибаетесь, то рисуется висельник. Завершите игру до того, как нарисуется висельник!
-Игра началась!""")
-        break
-    elif answer == 'нет':
-        print("\nИгра началась!")
-        break
-    else:
-        print("\nВведенные данные некорректны!")
-        answer = input("Введите ДА или НЕТ: ").lower().strip()
+rules(answer)
 otvet = input("\nВыберите уровень сложности!\nДля легкого введите 1, для сложного введите 2: ").strip()
-while True:
-    if otvet == '1':
-        words = easy_words
-        print("Вы выбрали легкий уровень сложности!")
-        break
-    elif otvet == '2':
-        words = hard_words
-        print('Вы выбрали сложный уровень!')
-        break
-    else:
-        print("Введенные данные некорректны!")
-        otvet = input("\nВыберите уровень сложности.\nДля легкого введите 1, для сложного введите 2: ").strip()
+words = level(otvet)
 word = random.choice(list(words.keys()))
 length_of_word = "_" * len(word)
 wrong = 0
