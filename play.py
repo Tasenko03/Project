@@ -1,38 +1,63 @@
 import random
 
 while True:
-    def rules(answer):
+    def language(answer_language: str) -> str:
+        while True:
+            if answer_language == "1" or answer_language == "english":
+                return "1"
+            elif answer_language == "2" or answer_language == "русский":
+                return "2"
+            else:
+                print("Попробуйте еще раз/Try again")
+                answer_language = input().lower().strip()
+
+
+    def rules(answer: str) -> None:
         while True:
             if answer == "да":
                 print(
                     """\nВам нужно угадать слово, указанное в загадке. Вы должны выбрать букву, которая есть в слове. 
-    Если вы ошибаетесь, то рисуется висельник. Завершите игру до того, как нарисуется висельник!
-    Игра началась!"""
+Если вы ошибаетесь, то рисуется висельник. Завершите игру до того, как нарисуется висельник!
+Игра началась!"""
                 )
+                break
+            elif answer == "yes":
+                print("""\nYou need to guess the word specified in the riddle. You have to choose the letter that is 
+in the word. If you are wrong, then a gallows is drawn. Finish the game before the gallows are drawn! 
+The game has started! """)
                 break
             elif answer == "нет":
                 print("\nИгра началась!")
                 break
+            elif answer == "no":
+                print("\nThe game has started!")
+                break
             else:
-                print("\nВведенные данные некорректны!")
-                answer = input("Введите ДА или НЕТ: ").lower().strip()
+                print("\nВведенные данные некорректны!/The data entered is incorrect!")
+                answer = input().lower().strip()
 
 
-    def level(otvet):
+    def level(level_answer: str) -> dict:
         while True:
-            if otvet == "1":
-                words = easy_words
+            if level_answer == "1" and language(level_answer) == "1":
+                words = English_dictionary_easy
+                print("You have chosen an easy level!")
+                return words
+            elif level_answer == "2" and language(level_answer) == "1":
+                words = English_dictionary_hard
+                print("You have chosen a complex level!")
+                return words
+            elif level_answer == "1" and language(level_answer) == "2":
+                words = Russian_dictionary_easy
                 print("Вы выбрали легкий уровень сложности!")
                 return words
-            elif otvet == "2":
-                words = hard_words
+            elif level_answer == "2" and language(level_answer) == "2":
+                words = Russian_dictionary_hard
                 print("Вы выбрали сложный уровень!")
                 return words
             else:
-                print("Введенные данные некорректны!")
-                otvet = input(
-                    "\nВыберите уровень сложности.\nДля легкого введите 1, для сложного введите 2: "
-                ).strip()
+                print("\nВведенные данные некорректны!/The data entered is incorrect!")
+                level_answer = input().strip()
 
 
     picture_of_man = (
@@ -109,64 +134,69 @@ while True:
         """,
     )
     max_wrong = len(picture_of_man) - 1
-    hard_words = {
-        "УРОКИ": "Что можно приготовить, но нельзя съесть?",
-        "ШАХМАТИСТ": "Кто ходит сидя?",
-        "ДВЕРЬ": "Кто приходит, кто уходит, все ее за ручку водят.",
-        "ДОРОГА": "Если б встала, до неба достала б.",
-        "День": "К вечеру умирает, по утру оживает.",
-        "РАДИО": "В Москве говорят, а у нас слышно.",
-        "ВРЕМЯ": "Без ног и без крыльев оно, быстро летит, не догонишь его.",
-        "ТУАЛЕТНАЯ": "Самая популярная бумага",
-        "СЕКРЕТОМ": "Чем можно поделиться только один раз?",
-    }
-    easy_words = {
-        "АВТОМОБИЛЬ": """Вдаль зовёт его дорога.
-     Светофор мигает строго.
-     Он проедет много миль,
-     легковой....""",
-        "ПОЕЗДА": """Цепь вагонов. - Спят здесь? - Да!
-     Мчат по рельсам... """,
-        "АВТОБУС": """Под колёсами не глобус.
-     В парк весь класс везёт.... """,
-        "ВЕЛОСИПЕД": """Двухколёсный мчит без бед
-     новый мой...""",
-        "САМОКАТ": """Тротуар. Несусь под скат.
-     Под ногой мой ...""",
-        "САМОЛЕТ": """Он летит из дальних стран.
-     Под крылами океан.
-     Выше облака полёт.
-     Птиц обгонит...""",
-        "ЛОДКА": """По воде плывёт "лебёдка".
-     Два весла. На речке...""",
-        "ШАР": """Для Незнайки был кошмар -
-     Падать стал воздушный... """,
-        "КОРОВА": """Не гляди ты так сурово!
-     Молочко нам дай,...""",
-    }
-    print("Хотите ли Вы ознакомиться с правилами?")
-    answer = input("Введите ДА или НЕТ: ").lower().strip()
+    Russian_dictionary_easy = {"мебель": ("диван", "стол", "табурет", "шкаф", "вешалка", "кресло", "кровать", "стул",
+                                          "этажерка"),
+                               "животные": ("собака", "кошка", "свинья", "мышь", "жираф", "слон", "тигр", "лев",
+                                            "волк"),
+                               "одежда": ("кофта", "брюки", "платье", "рубашка", "юбка", "носки", "свитер", "пальто",
+                                          "куртка"),
+                               "фрукты": ("банан", "апельсин", "яблоко", "ананас", "мандарин", "киви", "персик",
+                                          "абрикос", "груша")}
+
+    English_dictionary_easy = {"furniture": ("sofa", "table", "stool", "wardrobe", "hanger", "armchair", "bed", "chair",
+                                             "bookcase"),
+                               "animals": ("dog", "cat", "pig", "mouse", "giraffe", "elephant", "tiger", "lion",
+                                           "wolf"),
+                               "clothes": ("jacket", "trousers", "dress", "shirt", "skirt", "socks", "sweater", "coat",
+                                           "jacket"),
+                               "fruits": ("banana", "orange", "apple", "pineapple", "tangerine", "kiwi", "peach",
+                                          "apricot", "pear")}
+
+    Russian_dictionary_hard = {"физика": ("амплитуда", "вакуум", "вольтметр", "дифракция", "изолятор", "интерференция",
+                                          "конвекция", "конденсация", "радиоактивность")}
+
+    English_dictionary_hard = {"physics": ("amplitude", "vacuum", "voltmeter", "diffraction", "insulator",
+                                           "interference", "convection", "condensation", "radioactivity")}
+
+    print("Your language/Ваш язык: 1) English 2) Русский")
+    answer_language = input().lower().strip()
+    language(answer_language)
+    if language(answer_language) == "2":
+        print("Хотите ли Вы ознакомиться с правилами? Да/Нет")
+    else:
+        print("Do you want to read the rules? Yes/No")
+    answer = input().lower().strip()
     rules(answer)
-    otvet = input(
-        "\nВыберите уровень сложности!\nДля легкого введите 1, для сложного введите 2: "
-    ).strip()
-    words = level(otvet)
-    word = random.choice(list(words.keys()))
+    if language(answer_language) == "2":
+        print("\nВыберите уровень сложности!\nДля легкого введите 1, для сложного введите 2: ")
+    else:
+        print("\nSelect a difficulty level!\nEnter 1 for Easy level, enter 2 for Complex level: ")
+    level_answer = input().strip()
+    words1 = level(level_answer)
+    topic = random.choice(list(words1.keys()))
+    word = random.choice(list(words1[topic]))
     length_of_word = "_" * len(word)
     wrong = 0
     used_letter = []
     while wrong < max_wrong and length_of_word != word:
-        print("\nВот тебе небольшая подсказка:\n", words[word])
-        print(picture_of_man[wrong])
-        print("Вы уже предлагали следующие буквы: ", used_letter)
-        print("Отгаданное вами в слове сейчас выглядит так: ", length_of_word, "\n")
-        guess = input("Введите букву: ").upper()
+        if language(answer_language) == "2":
+            print("\nТема:\n", topic)
+        else:
+            print("\nTopic:\n", topic)
+        print(f"{picture_of_man[wrong]}\n{used_letter}\n{length_of_word}\n")
+        if language(answer_language) == "2":
+            print("Введите букву: ")
+        else:
+            print("Enter a letter: ")
+        guess = input().lower()
         while guess in used_letter:
-            print("Вы уже вводили букву ", guess)
-            guess = input("Введите другую букву: ").upper()
+            if language(answer_language) == "2":
+                print(f"Вы уже вводили букву {guess}. Введите другую букву:")
+            else:
+                print(f"You have already entered the letter {guess}. Please enter a different letter:")
+            guess = input().lower()
         used_letter.append(guess)
         if guess in word:
-            print(f"Буква {guess} есть в слове!")
             new = ""
             for i in range(len(word)):
                 if guess == word[i]:
@@ -175,23 +205,37 @@ while True:
                     new += length_of_word[i]
             length_of_word = new
         else:
-            print(f"К сожалению буквы {guess} нет в слове.")
             wrong += 1
     if wrong == max_wrong:
-        print("Вас повесили")
+        if language(answer_language) == "2":
+            print("Вас повесили")
+        else:
+            print("You've died")
         print(picture_of_man[wrong])
     else:
-        print("У тебя получилось!")
-    print("Вы предлагали следующие буквы: ", used_letter)
-    print("Отгаданное вами в слове выглядит так: ", length_of_word, "\n")
-    print("Было загадано слово ", word)
-      while True:
-    answer = input('Еще раз? (да/нет): ').lower().strip()
-    if answer in ('да', 'нет'):
-      break
-    print('Неверный ввод. Введите заново.')
-  if answer == 'да':
-    continue
-  else:
-    print('Спасибо за игру!')
-    break
+        if language(answer_language) == "2":
+            print("У тебя получилось!")
+        else:
+            print("You've won!")
+    print(f"\n{used_letter}\n{word}")
+    while True:
+        if language(answer_language) == "2":
+            print('Еще раз? (да/нет): ')
+        else:
+            print('Again? (yes/no): ')
+        answer = input().lower().strip()
+        if answer in ("да", "нет", "yes", "no"):
+            break
+        if language(answer_language) == "2":
+            print('Неверный ввод')
+        else:
+            print('Incorrect type')
+    if answer == 'да' or answer == 'yes':
+        continue
+    else:
+        if language(answer_language) == "2":
+            print('Спасибо за игру!')
+        else:
+            print('Thank you for playing!')
+        break
+
