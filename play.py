@@ -40,19 +40,19 @@ The game has started! """
 
     def level(level_answer: int) -> dict:
         while True:
-            if level_answer == 1 and language(level_answer) == 1:
+            if level_answer == 1 and language(answer_language) == 1:
                 words = English_dictionary_easy
                 print("You have chosen an easy level!")
                 return words
-            elif level_answer == 2 and language(level_answer) == 1:
+            elif level_answer == 2 and language(answer_language) == 1:
                 words = English_dictionary_hard
                 print("You have chosen a complex level!")
                 return words
-            elif level_answer == 1 and language(level_answer) == 2:
+            elif level_answer == 1 and language(answer_language) == 2:
                 words = Russian_dictionary_easy
                 print("Вы выбрали легкий уровень сложности!")
                 return words
-            elif level_answer == 2 and language(level_answer) == 2:
+            elif level_answer == 2 and language(answer_language) == 2:
                 words = Russian_dictionary_hard
                 print("Вы выбрали сложный уровень!")
                 return words
@@ -261,18 +261,18 @@ The game has started! """
     wrong = 0
     used_letter = []
     while wrong < max_wrong and length_of_word != word:
-        if language(answer_language) == "2":
+        if language(answer_language) == 2:
             print("\nТема:\n", topic)
         else:
             print("\nTopic:\n", topic)
         print(f"{picture_of_man[wrong]}\n{used_letter}\n{length_of_word}\n")
-        if language(answer_language) == "2":
+        if language(answer_language) == 2:
             print("Введите букву: ")
         else:
             print("Enter a letter: ")
         guess = input().lower()
         while guess in used_letter:
-            if language(answer_language) == "2":
+            if language(answer_language) == 2:
                 print(f"Вы уже вводили букву {guess}. Введите другую букву:")
             else:
                 print(
@@ -291,33 +291,33 @@ The game has started! """
         else:
             wrong += 1
     if wrong == max_wrong:
-        if language(answer_language) == "2":
+        if language(answer_language) == 2:
             print("Вас повесили")
         else:
             print("You've died")
         print(picture_of_man[wrong])
     else:
-        if language(answer_language) == "2":
+        if language(answer_language) == 2:
             print("У тебя получилось!")
         else:
             print("You've won!")
     print(f"\n{used_letter}\n{word}")
     while True:
-        if language(answer_language) == "2":
+        if language(answer_language) == 2:
             print("Еще раз? (да/нет): ")
         else:
             print("Again? (yes/no): ")
         answer = input().lower().strip()
         if answer in ("да", "нет", "yes", "no"):
             break
-        if language(answer_language) == "2":
+        if language(answer_language) == 2:
             print("Неверный ввод")
         else:
             print("Incorrect type")
     if answer == "да" or answer == "yes":
         continue
     else:
-        if language(answer_language) == "2":
+        if language(answer_language) == 2:
             print("Спасибо за игру!")
         else:
             print("Thank you for playing!")
