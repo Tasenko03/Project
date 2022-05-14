@@ -32,7 +32,6 @@ The game has started! """
                     print("\nВведенные данные некорректны!")
                     answer = input().lower().strip()
 
-
     def level(level_answer: str) -> dict:
         while True:
             if level_answer == "1" and answer_language == "1":
@@ -54,7 +53,6 @@ The game has started! """
             else:
                 print("\nВведенные данные некорректны!/The data entered is incorrect!")
                 level_answer = input().strip().lower()
-
 
     picture_of_man = (
         """
@@ -175,14 +173,52 @@ The game has started! """
         ),
     }
 
-    English_dictionary_easy = {"furniture": ("sofa", "table", "stool", "wardrobe", "hanger", "armchair", "bed", "chair",
-                                             "bookcase"),
-                               "animals": ("dog", "cat", "pig", "mouse", "giraffe", "elephant", "tiger", "lion",
-                                           "wolf"),
-                               "clothes": ("jacket", "trousers", "dress", "shirt", "skirt", "socks", "sweater", "coat",
-                                           "jacket"),
-                               "fruits": ("banana", "orange", "apple", "pineapple", "tangerine", "kiwi", "peach",
-                                          "apricot", "pear")}
+    English_dictionary_easy = {
+        "furniture": (
+            "sofa",
+            "table",
+            "stool",
+            "wardrobe",
+            "hanger",
+            "armchair",
+            "bed",
+            "chair",
+            "bookcase",
+        ),
+        "animals": (
+            "dog",
+            "cat",
+            "pig",
+            "mouse",
+            "giraffe",
+            "elephant",
+            "tiger",
+            "lion",
+            "wolf",
+        ),
+        "clothes": (
+            "jacket",
+            "trousers",
+            "dress",
+            "shirt",
+            "skirt",
+            "socks",
+            "sweater",
+            "coat",
+            "jacket",
+        ),
+        "fruits": (
+            "banana",
+            "orange",
+            "apple",
+            "pineapple",
+            "tangerine",
+            "kiwi",
+            "peach",
+            "apricot",
+            "pear",
+        ),
+    }
 
     Russian_dictionary_hard = {
         "физика": (
@@ -215,17 +251,21 @@ The game has started! """
     topic = ""
     word = ""
     print("Your language/Ваш язык: 1) English 2) Русский")
-    answer_language = input("Write the number of the language/Напишите цифру языка: ").strip().lower()
+    answer_language = (
+        input("Write the number of the language/Напишите цифру языка: ").strip().lower()
+    )
     while True:
         if answer_language == "2":
             print(
                 "\nВыберите режим игры: на двоих игроков или на одного игрока.\nВведите цифру 1, если на "
-                "одного игрока. Введите цифру 2, если на двоих игроков.")
+                "одного игрока. Введите цифру 2, если на двоих игроков."
+            )
             break
         elif answer_language == "1":
             print(
                 "\nChoose the game mode: for two players or for one player.\nEnter the number 1 if for one "
-                "player.Enter the number 2 if for two players.")
+                "player.Enter the number 2 if for two players."
+            )
             break
         else:
             print("Неккоректный ввод!/Wrong input!")
@@ -256,7 +296,8 @@ The game has started! """
             elif answer_language == "1" and answer_game_mode == "1":
                 print(
                     "\nSelect a difficulty level!\nEnter 1 for Easy level, enter 2 for Complex "
-                    "level: ")
+                    "level: "
+                )
             level_answer = input().strip().lower()
             words1 = level(level_answer)
             topic1 = random.choice(list(words1.keys()))
