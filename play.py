@@ -546,15 +546,15 @@ The game has started! """
             wrong += 1
     if wrong == max_wrong:
         if answer_language == "2":
-            print("\nВас повесили")
+            print("\nВас повесили\n(╮°-°)╮┳━━┳ ( ╯°□°)╯ ┻━━┻")
         else:
-            print("\nYou've died")
+            print("\nYou've died\n(╮°-°)╮┳━━┳ ( ╯°□°)╯ ┻━━┻")
         print(picture_of_man[wrong])
     else:
         if answer_language == "2":
-            print("\nУ тебя получилось!")
+            print("\nУ тебя получилось!\n＼(￣▽￣)／")
         else:
-            print("\nYou've won!")
+            print("\nYou've won!\n＼(￣▽￣)／")
     print(f"\n{used_letter}\n{word}")
 
     while True:  # функция restart
