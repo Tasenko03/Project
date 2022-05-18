@@ -19,10 +19,10 @@ The game has started! """
                 )
                 break
             elif answer == "нет":
-                pass
+                print("\nИгра началась!")
                 break
             elif answer == "no":
-                pass
+                print("\nThe game has started!")
                 break
             else:
                 if answer_language == "1":
@@ -455,30 +455,28 @@ The game has started! """
     )
     while True:
         if answer_language == "2":
-            print("\nХотите ли Вы ознакомиться с правилами? Да/Нет")
-            answer = input().lower().strip()
-            rules(answer)
+            print(
+                "\nВыберите режим игры: на двоих игроков или на одного игрока.\nВведите цифру 1, если на "
+                "одного игрока. Введите цифру 2, если на двоих игроков."
+            )
             break
         elif answer_language == "1":
-            print("\nDo you want to read the rules? Yes/No")
-            answer = input().lower().strip()
-            rules(answer)
+            print(
+                "\nChoose the game mode: for two players or for one player.\nEnter the number 1 if for one "
+                "player.Enter the number 2 if for two players."
+            )
             break
         else:
             print("Неккоректный ввод!/Wrong input!")
             answer_language = input().strip().lower()
 
-    if answer_language == "2":
-        print(
-            "\nВыберите режим игры: на двоих игроков или на одного игрока.\nВведите цифру 1, если на "
-            "одного игрока. Введите цифру 2, если на двоих игроков."
-        )
-    else:
-        print(
-            "\nChoose the game mode: for two players or for one player.\nEnter the number 1 if for one "
-            "player.Enter the number 2 if for two players."
-        )
     answer_game_mode = input().strip().lower()
+    if answer_language == "1":
+        print("\nDo you want to read the rules? Yes/No")
+    else:
+        print("\nХотите ли Вы ознакомиться с правилами? Да/Нет")
+    answer = input().lower().strip()
+    rules(answer)
     while True:
         if answer_game_mode == "2":
             if answer_language == "2":
