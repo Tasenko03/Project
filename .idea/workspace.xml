@@ -28,7 +28,6 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
   </component>
   <component name="RunManager" selected="Python.play">
     <configuration name="checking" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
